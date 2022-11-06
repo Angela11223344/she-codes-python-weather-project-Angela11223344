@@ -5,26 +5,32 @@ DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 
 def format_temperature(temp):
-    """Takes a temperature and returns it in string format with the degrees
-        and celcius symbols.
+    # """Takes a temperature and returns it in string format with the degrees
+    #     and celcius symbols.
 
-    Args:
-        temp: A string representing a temperature.
-    Returns:
-        A string contain the temperature and "degrees celcius."
-    """
+    # Args:
+    #     temp: A string representing a temperature.
+    # Returns:
+    #     A string contain the temperature and "degrees celcius."
+    # """
     return f"{temp}{DEGREE_SYBMOL}"
 
 
 def convert_date(iso_string):
-    """Converts and ISO formatted date into a human readable format.
+    #date = iso_string.split("-")
+    
+    return iso_string
 
-    Args:
-        iso_string: An ISO date string..
-    Returns:
-        A date formatted like: Weekday Date Month Year e.g. Tuesday 06 July 2021
-    """
-    pass
+    #"%A %b %d %Y"
+    
+    # """Converts and ISO formatted date into a human readable format.
+
+    # Args:
+    #     iso_string: An ISO date string..
+    # Returns:
+    #     A date formatted like: Weekday Date Month Year e.g. Tuesday 06 July 2021
+    # """
+    #pass
 
 
 def convert_f_to_c(temp_in_farenheit):
@@ -39,17 +45,30 @@ def convert_f_to_c(temp_in_farenheit):
 
 
 def calculate_mean(weather_data):
-    """Calculates the mean value from a list of numbers.
+    total = 0
+    how_many = 0
+    for num in weather_data:
+        total += float(num)
+        how_many += 1
+    mean = total/how_many
+    return mean
 
-    Args:
-        weather_data: a list of numbers.
-    Returns:
-        A float representing the mean value.
-    """
-    pass
+    # """Calculates the mean value from a list of numbers.
+
+    # Args:
+    #     weather_data: a list of numbers.
+    # Returns:
+    #     A float representing the mean value.
+    # """
+    # pass
 
 
 def load_data_from_csv(csv_file):
+
+    with open(csv_file) as csv_file:
+        reader = csv.reader(csv_file)
+        for line in reader:
+    return 
     """Reads a csv file and stores the data in a list.
 
     Args:
