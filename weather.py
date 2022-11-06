@@ -34,8 +34,9 @@ def convert_date(iso_string):
 
 
 def convert_f_to_c(temp_in_farenheit):
-
-
+    temp_in_celcius = (float(((temp_in_farenheit - 32)*5)/9))
+    rounded_temp = round(temp_in_celcius,1)
+    return rounded_temp
 
     # """Converts an temperature from farenheit to celcius.
 
@@ -87,15 +88,16 @@ def load_data_from_csv(csv_file):
 
 def find_min(weather_data):
 
-    smallest_num = 0
-    weather_data = [*set(weather_data)]
-    for num in weather_data:
-        num = int(num)
-        if num < smallest_num:
-            smallest_num = num
-            position = weather_data.index(smallest_num)
-    return smallest_num
-        
+    if weather_data == []:
+        return ()
+    else:
+        weather_data = [float(num) for num in weather_data]
+        min_num = 0
+        for num in weather_data:
+            if num < min_num:
+                min_num = num
+                position = weather_data.index(min_num)
+        return min_num, position
 
     # """Calculates the minimum value in a list of numbers.
 
@@ -104,7 +106,7 @@ def find_min(weather_data):
     # Returns:
     #     The minium value and it's position in the list.
     # """
-    pass
+    # pass
 
 
 def find_max(weather_data):
@@ -114,9 +116,7 @@ def find_max(weather_data):
     else:
         weather_data = [float(num) for num in weather_data]
         max_num = 0
-
         for num in weather_data:
-            num = float(num)
             if num > max_num:
                 max_num = num
                 position = weather_data.index(max_num)
