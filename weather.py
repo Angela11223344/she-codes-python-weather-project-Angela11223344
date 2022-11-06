@@ -34,6 +34,7 @@ def convert_date(iso_string):
 
 
 def convert_f_to_c(temp_in_farenheit):
+    temp_in_farenheit = (float(temp_in_farenheit))
     temp_in_celcius = (float(((temp_in_farenheit - 32)*5)/9))
     rounded_temp = round(temp_in_celcius,1)
     return rounded_temp
@@ -45,7 +46,7 @@ def convert_f_to_c(temp_in_farenheit):
     # Returns:
     #     A float representing a temperature in degrees celcius, rounded to 1dp.
     # """
-    pass
+    # pass
 
 
 def calculate_mean(weather_data):
