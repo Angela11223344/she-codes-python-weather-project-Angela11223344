@@ -18,8 +18,10 @@ def format_temperature(temp):
 
 def convert_date(iso_string):
     #date = iso_string.split("-")
-    
-    return iso_string
+    for line in iso_string:
+        date = datetime.line
+        datetime.fromisoformat("%A %b %d %y") 
+        return date
 
     #"%A %b %d %Y"
     
@@ -70,12 +72,14 @@ def calculate_mean(weather_data):
 
 def load_data_from_csv(csv_file):
 
-    with open(csv_file) as csv_file:
+    with open(csv_file, encoding="utf-8") as csv_file:
         reader = csv.reader(csv_file)
+        headings = next(reader)
         csv_list = []
         for line in reader:
+            line[1] = int(line[1])
             csv_list.append(line)
-    return csv_list
+        return csv_list
 
     # """Reads a csv file and stores the data in a list.
 
@@ -91,14 +95,11 @@ def find_min(weather_data):
 
     if weather_data == []:
         return ()
-    else:
+    else: 
         weather_data = [float(num) for num in weather_data]
-        min_num = 0
-        for num in weather_data:
-            if num < min_num:
-                min_num = num
-                position = weather_data.index(min_num)
-        return min_num, position
+        min_num = min(weather_data)
+        index_num = [index for index, num in enumerate(weather_data) if num == min_num]
+        return min_num, index_num[-1]
 
     # """Calculates the minimum value in a list of numbers.
 
@@ -116,12 +117,9 @@ def find_max(weather_data):
         return ()
     else:
         weather_data = [float(num) for num in weather_data]
-        max_num = 0
-        for num in weather_data:
-            if num > max_num:
-                max_num = num
-                position = weather_data.index(max_num)
-        return max_num, position
+        max_num = max(weather_data)
+        index_num = [index for index, num in enumerate(weather_data) if num == max_num]
+        return max_num, index_num[-1]
 
     # """Calculates the maximum value in a list of numbers.
 
@@ -134,22 +132,39 @@ def find_max(weather_data):
 
 
 def generate_summary(weather_data):
-    """Outputs a summary for the given weather data.
 
-    Args:
-        weather_data: A list of lists, where each sublist represents a day of weather data.
-    Returns:
-        A string containing the summary information.
-    """
+    #     return f"{total} Day Overview"
+    # f"The lowest temperature will be {min_temp}, and will occur on {date}."
+    # f"The highest temperature will be {max_temp}, and will occur on {date}."
+    # f"The average low this week is {average_low_temp}."
+    # f"The average high this week is {average_high_temp}."
+
+
+    # """Outputs a summary for the given weather data.
+
+    # Args:
+    #     weather_data: A list of lists, where each sublist represents a day of weather data.
+    # Returns:
+    #     A string containing the summary information.
+    # """
     pass
 
 
 def generate_daily_summary(weather_data):
-    """Outputs a daily summary for the given weather data.
 
-    Args:
-        weather_data: A list of lists, where each sublist represents a day of weather data.
-    Returns:
-        A string containing the summary information.
-    """
+    # for item in weather_data:
+    #     for 
+
+    # return f"---- {date} ----"
+    # f"Minimum Temperature: {min_temp}"
+    # f"Maximum Temperature: {max_temp}"
+
+
+#     """Outputs a daily summary for the given weather data.
+
+#     Args:
+#         weather_data: A list of lists, where each sublist represents a day of weather data.
+#     Returns:
+#         A string containing the summary information.
+#     """
     pass
