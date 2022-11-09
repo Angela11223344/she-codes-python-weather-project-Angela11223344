@@ -17,13 +17,9 @@ def format_temperature(temp):
 
 
 def convert_date(iso_string):
-    #date = iso_string.split("-")
-    for line in iso_string:
-        date = datetime.line
-        datetime.fromisoformat("%A %b %d %y") 
-        return date
-
-    #"%A %b %d %Y"
+    iso_string_format = datetime.strptime(iso_string, "%Y-%m-%dT%H:%M:%S%z")
+    string_date = iso_string_format.strftime("%A %d %B %Y")
+    return string_date
     
     # """Converts and ISO formatted date into a human readable format.
 
@@ -73,13 +69,21 @@ def calculate_mean(weather_data):
 def load_data_from_csv(csv_file):
 
     with open(csv_file, encoding="utf-8") as csv_file:
-        reader = csv.reader(csv_file)
+        reader = csv.reader(csv_file) 
         headings = next(reader)
         csv_list = []
         for line in reader:
-            line[1] = int(line[1])
             csv_list.append(line)
         return csv_list
+
+    # with open(csv_file, encoding="utf-8") as csv_file:
+    #     reader = csv.reader(csv_file)
+    #     headings = next(reader)
+    #     csv_list = []
+    #     for line in reader:
+    #         line[1] = int(line[1])
+    #         csv_list.append(line)
+    #     return csv_list
 
     # """Reads a csv file and stores the data in a list.
 
