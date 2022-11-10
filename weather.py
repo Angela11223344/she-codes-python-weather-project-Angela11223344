@@ -159,7 +159,7 @@ def generate_summary(weather_data):
     average_low_c = convert_f_to_c(average_low_temp_f)
     average_high_c = convert_f_to_c(average_high_temp_f)
         
-    summary_of_weather = f"{total} Day Overview\n   The lowest temperature will be {format_temperature(minimum)}, and will occur on {min_string_of_iso}.\n    The highest temperature will be {format_temperature(maximum)}, and will occur on {max_string_of_iso}.\n    The average low this week is {format_temperature(average_low_c)}.\n   The average high this week is {format_temperature(average_high_c)}."
+    summary_of_weather = f"{total} Day Overview\n  The lowest temperature will be {format_temperature(minimum)}, and will occur on {min_string_of_iso}.\n  The highest temperature will be {format_temperature(maximum)}, and will occur on {max_string_of_iso}.\n  The average low this week is {format_temperature(average_low_c)}.\n  The average high this week is {format_temperature(average_high_c)}.\n"
     
     return summary_of_weather
 
