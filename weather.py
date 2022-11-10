@@ -145,22 +145,23 @@ def generate_summary(weather_data):
         max_temps.append(max_temp)
         
     min_temp_and_index = find_min(min_temps)
+    minimum = convert_f_to_c(min_temp_and_index[0])
+    min_index = min_temp_and_index[1]
     max_temp_and_index = find_max(max_temps)
+    maximum = convert_f_to_c(max_temp_and_index[0])
+    max_index = max_temp_and_index[1]
     
+    min_string_of_iso = convert_date(weather_data[min_index][0])
+    max_string_of_iso = convert_date(weather_data[max_index][0])
+
     average_low_temp_f = calculate_mean(min_temps)
     average_high_temp_f = calculate_mean(max_temps)
     average_low_c = convert_f_to_c(average_low_temp_f)
     average_high_c = convert_f_to_c(average_high_temp_f)
         
-    summary_of_weather = f"{total} Day Overview\n   The lowest temperature will be {min_temp_and_index}, and will occur on Sunday.\n    The highest temperature will be {max_temp_and_index}, and will occur on Monday.\n    The average low this week is {average_low_c}.\n   The average high this week is {average_high_c}."
+    summary_of_weather = f"{total} Day Overview\n   The lowest temperature will be {format_temperature(minimum)}, and will occur on {min_string_of_iso}.\n    The highest temperature will be {format_temperature(maximum)}, and will occur on {max_string_of_iso}.\n    The average low this week is {format_temperature(average_low_c)}.\n   The average high this week is {format_temperature(average_high_c)}."
     
     return summary_of_weather
-
-    # ["2021-07-02T07:00:00+08:00", 49, 67],
-    # ["2021-07-03T07:00:00+08:00", 57, 68],
-    # ["2021-07-04T07:00:00+08:00", 56, 62],
-    # ["2021-07-05T07:00:00+08:00", 55, 61],
-    # ["2021-07-06T07:00:00+08:00", 53, 62]
 
     # """Outputs a summary for the given weather data.
 
@@ -174,11 +175,12 @@ def generate_summary(weather_data):
 
 def generate_daily_summary(weather_data):
 
-    # for item in weather_data:
-         
+    #for item in weather_data:
 
-    # daily_summary = f"---- {date} ----\n    Minimum Temperature: {min_temp}\n   Maximum Temperature: {max_temp}"
-    # return daily_summary
+
+    #daily_summary = f"---- {date} ----\n    Minimum Temperature: {min_temp}\n   Maximum Temperature: {max_temp}"
+    
+    #return daily_summary
 
 #     """Outputs a daily summary for the given weather data.
 
