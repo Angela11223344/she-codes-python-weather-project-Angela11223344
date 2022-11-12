@@ -67,22 +67,27 @@ def calculate_mean(weather_data):
 
 
 def load_data_from_csv(csv_file):
-    with open(csv_file, encoding="utf-8") as csv_file:
-        reader = csv.reader(csv_file) 
-        headings = next(reader)
-        csv_list = []
-        for line in reader:
-            csv_list.append(line)
-        return csv_list
 
-    # with open(csv_file, encoding="utf-8") as csv_file:
-    #     reader = csv.reader(csv_file)
-    #     headings = next(reader)
-    #     csv_list = []
-    #     for line in reader:
-    #         line[1] = int(line[1])
-    #         csv_list.append(line)
-    #     return csv_list
+    csv_list = []
+
+    with open(csv_file, encoding="utf-8") as csv_file:
+        reader = csv.reader(csv_file)
+        headings = next(reader)
+
+        for item in reader:
+            if len(item)== 0:
+                continue
+            else:
+                csv_list.append(item)
+                for i in item:
+                    a = int(item[1])
+                    b = int(item[2])
+                    item[1] = a
+                    item[2] = b
+
+    return csv_list
+
+#print (load_data_from_csv("tests//data//example_one.csv"))
 
     # """Reads a csv file and stores the data in a list.
 
@@ -120,7 +125,7 @@ def find_max(weather_data):
         weather_data = [float(num) for num in weather_data]
         max_num = max(weather_data)
         index_num = [index for index, num in enumerate(weather_data) if num == max_num]
-        return float(max_num), index_num[-1]
+        return max_num, index_num[-1]
 
     # """Calculates the maximum value in a list of numbers.
 
@@ -136,7 +141,6 @@ def generate_summary(weather_data):
     total = len(weather_data)
     min_temps = []
     max_temps = []
-    iso_date = ''
 
     for item in weather_data:
         min_temp = item[1]
@@ -174,13 +178,52 @@ def generate_summary(weather_data):
 
 
 def generate_daily_summary(weather_data):
+    daily_summary_list = []
+    for item in weather_data:
+        day_date = convert_date(item[0])
+        lowest_temp = convert_f_to_c(item[1])
+        highest_temp = convert_f_to_c(item[2])
+        daily_summary_list.append(f"---- {day_date} ----\n Minimum Temperature:{format_temperature(lowest_temp)}\n Maximum Temperature:{format_temperature(highest_temp)}\n\n")
 
-    #for item in weather_data:
+    #for item in 
 
-
-    #daily_summary = f"---- {date} ----\n    Minimum Temperature: {min_temp}\n   Maximum Temperature: {max_temp}"
+    return daily_summary_list
     
-    #return daily_summary
+    # daily_summary_list = []
+    # for item in weather_data:
+    #     day_date = convert_date(item[0])
+    #     lowest_temp = convert_f_to_c(item[1])
+    #     highest_temp = convert_f_to_c(item[2])
+    #     daily_summary_list.append(f"---- {day_date} ----\n Minimum Temperature:{format_temperature(lowest_temp)}\n Maximum Temperature:{format_temperature(highest_temp)}\n\n")
+    # return daily_summary_list
+
+# date,min,max
+# 2021-07-02T07:00:00+08:00,49,67
+# 2021-07-03T07:00:00+08:00,57,68
+# 2021-07-04T07:00:00+08:00,56,62
+# 2021-07-05T07:00:00+08:00,55,61
+# 2021-07-06T07:00:00+08:00,53,62
+
+
+#     ---- Friday 02 July 2021 ----
+#   Minimum Temperature: 9.4°C
+#   Maximum Temperature: 19.4°C
+
+#     ---- Saturday 03 July 2021 ----
+#   Minimum Temperature: 13.9°C
+#   Maximum Temperature: 20.0°C
+
+#     ---- Sunday 04 July 2021 ----
+#   Minimum Temperature: 13.3°C
+#   Maximum Temperature: 16.7°C
+
+#     ---- Monday 05 July 2021 ----
+#   Minimum Temperature: 12.8°C
+#   Maximum Temperature: 16.1°C
+
+#     ---- Tuesday 06 July 2021 ----
+#   Minimum Temperature: 11.7°C
+#   Maximum Temperature: 16.7°C
 
 #     """Outputs a daily summary for the given weather data.
 
