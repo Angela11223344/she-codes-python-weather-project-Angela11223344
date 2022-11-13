@@ -178,17 +178,47 @@ def generate_summary(weather_data):
 
 
 def generate_daily_summary(weather_data):
-    daily_summary_list = []
+    daily_summary = []
+    
     for item in weather_data:
         day_date = convert_date(item[0])
         lowest_temp = convert_f_to_c(item[1])
         highest_temp = convert_f_to_c(item[2])
-        daily_summary_list.append(f"---- {day_date} ----\n Minimum Temperature:{format_temperature(lowest_temp)}\n Maximum Temperature:{format_temperature(highest_temp)}\n\n")
-
-    #for item in 
-
-    return daily_summary_list
+        daily_summary.append(f"---- {day_date} ----\n  Minimum Temperature: {format_temperature(lowest_temp)}\n  Maximum Temperature: {format_temperature(highest_temp)}\n\n")
     
+    daily_summary = ''.join(daily_summary)
+    return daily_summary
+
+    # date,min,max
+# 2021-07-02T07:00:00+08:00,49,67
+# 2021-07-03T07:00:00+08:00,57,68
+# 2021-07-04T07:00:00+08:00,56,62
+# 2021-07-05T07:00:00+08:00,55,61
+# 2021-07-06T07:00:00+08:00,53,62
+
+        #daily_summary = f"---- {day_date} ----\n Minimum Temperature:{format_temperature(lowest_temp)}\n Maximum Temperature:{format_temperature(highest_temp)}\n\n"  
+
+    #print ({f"The daily summary list is: {daily_summary_list}"})
+    
+    
+# daily_summary_list = []
+    
+#     for item in weather_data:
+#         day_date = convert_date(item[0])
+#         lowest_temp = convert_f_to_c(item[1])
+#         highest_temp = convert_f_to_c(item[2])
+#         daily_summary_list.append([day_date,lowest_temp, highest_temp])    
+
+#         for item in daily_summary_list:
+#             day_date = item[0]
+#             lowest_temp = item[1]
+#             highest_temp = item[2]
+
+#             daily_summary = f"---- {day_date} ----\n Minimum Temperature:{format_temperature(lowest_temp)}\n Maximum Temperature:{format_temperature(highest_temp)}\n\n"  
+
+#     print ({f"The daily summary is: {daily_summary}"})
+#     return daily_summary
+
     # daily_summary_list = []
     # for item in weather_data:
     #     day_date = convert_date(item[0])
