@@ -19,7 +19,7 @@ def format_temperature(temp):
 def convert_date(iso_string):
     iso_string_format = datetime.strptime(iso_string, "%Y-%m-%dT%H:%M:%S%z")
     string_date = iso_string_format.strftime("%A %d %B %Y")
-    return str(string_date)
+    return string_date
     
     # """Converts and ISO formatted date into a human readable format.
 
@@ -49,11 +49,9 @@ def convert_f_to_c(temp_in_farenheit):
 
 def calculate_mean(weather_data):
     total = 0
-    how_many = 0
     for num in weather_data:
         total += float(num)
-        how_many += 1
-    mean = total/how_many
+    mean = total/len(weather_data)
     return mean
 
     # """Calculates the mean value from a list of numbers.
