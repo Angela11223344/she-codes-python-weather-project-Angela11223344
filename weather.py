@@ -32,8 +32,7 @@ def convert_date(iso_string):
 
 
 def convert_f_to_c(temp_in_farenheit):
-    temp_in_farenheit = (float(temp_in_farenheit))
-    temp_in_celcius = (float(((temp_in_farenheit - 32)*5)/9))
+    temp_in_celcius = ((float(temp_in_farenheit)-32)*5)/9
     rounded_temp = round(temp_in_celcius,1)
     return rounded_temp
 
